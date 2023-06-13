@@ -83,7 +83,7 @@ public class MongoDBService {
             collection.insertOne(document);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Exception during adding document, error message: {}", e.getMessage());
             return false;
         }
     }
@@ -95,7 +95,7 @@ public class MongoDBService {
             collection.insertMany(documents);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Exception during adding documents batch, error message: {}", e.getMessage());
             return false;
         }
     }
@@ -110,7 +110,7 @@ public class MongoDBService {
             UpdateResult result = collection.replaceOne(filter, document);
             return result.getModifiedCount() > 0;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Exception during updating document, error message: {}", e.getMessage());;
             return false;
         }
     }
@@ -126,7 +126,7 @@ public class MongoDBService {
             }
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Exception during updating documents batch, error message: {}", e.getMessage());
             return false;
         }
     }
@@ -141,7 +141,7 @@ public class MongoDBService {
             DeleteResult result = collection.deleteOne(filter);
             return result.getDeletedCount() > 0;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Exception during deleting document, error message: {}", e.getMessage());
             return false;
         }
     }
@@ -162,7 +162,7 @@ public class MongoDBService {
 
             return result.getDeletedCount() > 0;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Exception during deleting document batch, error message: {}", e.getMessage());
             return false;
         }
     }
